@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>light check</title>
+<link rel="icon"  href="test.jpg">
+
+<style>
+    .container {
+        text-align: left;
+    }
+    .circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgb(255, 255, 255);
+        margin: 20px;
+        position: relative;
+    }
+    #red-circle {
+        background-color: red;
+    }
+    #green
+    {
+        background: green;
+    }
+    #yellow
+    {
+        background: yellow;
+    }
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        align-self: center;
+        background: rgb(0, 0, 0);
+        width: 300px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .button{
+        width: 1000px;
+    }
+    
+</style>
+</head>
+<body>
+    <div class="main">
+    <div class="circle" id="grey-circle"></div>
+    <div class="circle" id="grey1"></div>
+    <div class="circle" id="grey2"></div>
+    </div>
+
+    <p>RED <button id="colorButton" onclick="changeColor()">click</button><br></p>
+    <p>GREEN <button id="colorButton1" onclick="changeColor1()">click</button><br></p>
+    <p>YELLOW <button id="colorButton2" onclick="changeColor2()">click</button><br></p>
+    <p>ALL <button  onclick="changeColor3()">click</button><br></p>
+    <p>ALT<button id="colorButton3" onclick="changeColor4()">click</button><br></p>
+
+<script>
+    function changeColor() {
+        var circle = document.getElementById('grey-circle');
+        document.getElementById('colorButton').style.backgroundColor = 'red';
+        circle.id = 'red-circle';
+        
+        
+    }
+    function changeColor1() {
+        document.getElementById('colorButton1').style.backgroundColor = 'green';
+        var circle = document.getElementById('grey1');
+        circle.id = 'green';
+    }
+    function changeColor2() {
+        var circle = document.getElementById('grey2');
+        document.getElementById('colorButton2').style.backgroundColor = 'yellow';
+        circle.id = 'yellow';
+    }
+    function changeColor3() {
+        document.getElementById('grey-circle').style.backgroundColor = 'red';
+        document.getElementById('grey1').style.backgroundColor = 'green';
+        document.getElementById('grey2').style.backgroundColor = 'yellow';
+    }
+    function changeColor4() {
+        var circles = ['grey-circle', 'grey1', 'grey2'];
+        var index = 0;
+        var intervalId = setInterval(function() {
+            if (index >= circles.length) {
+                clearInterval(intervalId); 
+                return;
+            }
+            var circleId = circles[index];
+            var circle = document.getElementById(circleId);
+            if (index === 0) {
+                circle.style.backgroundColor = 'red'; 
+            } else if (index === 1) {
+                circle.style.backgroundColor = 'green'; 
+            } else {
+                circle.style.backgroundColor = 'yellow'; 
+            }
+            index++;
+        }, 500); 
+    }
+</script>
+
+</body>
+</html>
